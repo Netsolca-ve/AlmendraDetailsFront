@@ -3,10 +3,11 @@ import { NzIconModule, provideNzIcons } from 'ng-zorro-antd/icon';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import {
   ShoppingCartOutline,
   WhatsAppOutline,
-} from '@ant-design/icons-angular/icons';
+} from '@ant-design/icons-angular/icons';  
 
 
 const icons = [
@@ -18,7 +19,8 @@ const zorroModules = [
   NzTableModule,
   NzModalModule,
   NzMessageModule,
-  NzIconModule
+  NzIconModule,
+  NzBadgeModule
 ]
 
 @NgModule({

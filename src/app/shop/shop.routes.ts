@@ -1,8 +1,8 @@
 import { Routes } from "@angular/router"
 
 export const ShopRoutes: Routes = [
-    {
-        path: 'home',
+        {
+        path: '',
         loadComponent: () => import('./home/home.component').then((c) => c.HomeComponent),
         title: 'Alemdra Details'
     }
