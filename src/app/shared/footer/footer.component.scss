@@ -1,0 +1,61 @@
+footer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    height: auto;
+}
+
+.footerTop{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding-top: 20px;
+}
+
+.footerLeftInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.footerLeftInfo .info p{
+    font-size: 16px;
+    max-width: 50%;
+}
+
+.socials{
+    display: flex;
+    gap: 10px;
+}
+
+.socials span{
+    font-size: 20px;
+    &:hover{
+        cursor: pointer;
+        color: red;
+    }
+}
+
+.footerRight{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.footerRightInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+}
+
+.footerBot{
+    padding: 20px;
+}
+
