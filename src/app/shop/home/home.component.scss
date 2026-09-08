@@ -232,6 +232,8 @@ img{
 
 .aboutInfo p{
     font-size: 20px;
+    max-width: 97%;
+    text-wrap: balance;
 }
 
 .location{
@@ -300,6 +302,7 @@ form h4{
     align-items: start;
     flex-direction: column;
     width: 100%;
+    gap: 10px;
 }
 
 .inputGroup input{
@@ -322,6 +325,7 @@ form h4{
     align-items: start;
     flex-direction: column;
     width: 100%;
+    gap: 10px;
 }
 
 .inputGroup3 textarea{
@@ -330,6 +334,10 @@ form h4{
     resize: none;
     border: none;
     border-bottom: 1px solid black;
+}
+
+.inputGroup3 textarea:focus, .inputGroup input:focus{
+    outline: none;
 }
 
 .btn{
