@@ -33,7 +33,9 @@ footer{
     gap: 10px;
 }
 
-.socials span{
+.socials a{
+    text-decoration: none;
+    color: black;
     font-size: 20px;
     &:hover{
         cursor: pointer;
@@ -55,7 +57,26 @@ footer{
     gap: 10px;
 }
 
+.footerRightInfo a{
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    &:hover{
+        color: #334537;
+    }
+}
+
 .footerBot{
     padding: 20px;
+}
+
+.footerBot a{
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+    &:hover{
+        color: #334537;
+    }
 }
 

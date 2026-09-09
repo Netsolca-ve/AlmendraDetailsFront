@@ -1,7 +1,7 @@
-import { Component, input, output, inject, HostListener, signal } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-// import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
@@ -10,37 +10,21 @@ import { MatDividerModule } from '@angular/material/divider';
   selector: 'app-shopping-cart',
   standalone: true,
   imports: [
-    RouterLink,
-    // MatSidenavModule,
-    // MatButtonModule,
+    MatButtonModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSidenavModule
   ],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.scss'
 })
 export class ShoppingCartComponent {
-  isScrolled = false;
-  isOpen = signal(false);
+  isOpen = input<boolean>(false);
 
-  openCart() {
-    this.isOpen.set(true);
-  }
+  // Evento para notificar al padre (Navbar) que se cerró el carrito
+  closeCart = output<void>();
 
-  get navbarScrolled(): boolean {
-    return this.isScrolled || this.isOpen();
-  }
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    if (this.isOpen()) return;
-
-    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-
-    if (scrollPosition > 120) {
-      this.isScrolled = true;
-    } else if (scrollPosition < 50) {
-      this.isScrolled = false;
-    }
+  onClose(): void {
+    this.closeCart.emit();
   }
 }

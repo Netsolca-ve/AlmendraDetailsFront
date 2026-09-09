@@ -11,10 +11,16 @@
     </div>
 
     <div class="btns">
-        <span class="cart-icon" nz-icon nzType="shopping-cart"></span>
-        <button>
-            <span nz-icon nzType="whats-app"></span>
+        <mat-icon (click)="isOpen.set(true)" class="material-icons-outlined cart-icon">shopping_cart</mat-icon>
+     
+        <button  class="contact-btn">
+            <i class="fa-brands fa-whatsapp" style="font-size: 22px; color: white;"></i>
             Escribenos
         </button>
     </div>
 </nav>
+
+<app-shopping-cart 
+  [isOpen]="isOpen()" 
+  (closeCart)="isOpen.set(false)">
+</app-shopping-cart>

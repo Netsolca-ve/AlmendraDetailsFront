@@ -13,6 +13,7 @@ nav {
   z-index: 1000;
   background-color: transparent;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: #FDF2F3;
 
   &.scrolled {
     position: fixed;
@@ -54,6 +55,7 @@ nav {
     color: black;
     padding-bottom: 5px;
     transition: color 0.3s ease;
+    text-decoration: none;
 }
 
 .links a:hover{
@@ -90,11 +92,15 @@ nav {
 
 .btns{
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 25px;
 }
 
 .btns .cart-icon{
     font-size: 1.5rem;
+    color: #334537;
+    cursor: pointer;
 }
 
 .btns button{
@@ -104,4 +110,7 @@ nav {
     border-radius: 20px;
     cursor: pointer;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
