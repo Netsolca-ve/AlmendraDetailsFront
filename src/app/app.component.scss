@@ -1,0 +1,23 @@
+.scroll-to-top-btn {
+    position: fixed !important;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999; // Asegura que esté por encima de otros elementos
+    background-color: #334537 !important; // Color verde de la paleta Almendra Details
+    color: #FDF2F3 !important; // Color claro/rosado de contraste
+    border: none;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    i {
+        font-size: 1.5rem;
+    }
+
+    &:hover {
+        transform: scale(1.08);
+        transition: transform 0.2s ease;
+        cursor: pointer;
+    }
+}

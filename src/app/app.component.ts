@@ -8,5 +8,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Scroll suave hacia arriba
+    });
+  }
 }
