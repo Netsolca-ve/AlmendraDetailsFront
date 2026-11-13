@@ -3,10 +3,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   imports: [
+    CommonModule,
     RouterLink,
     RouterLinkActive,
     ShoppingCartComponent,
@@ -17,15 +19,12 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  isScrolled = false;
+  isScrolled = signal(false);
   isOpen = signal(false);
+  isMobileOpen = signal(false);
 
-  openCart() {
-    this.isOpen.set(true);
-  }
-
-  get navbarScrolled(): boolean {
-    return this.isScrolled || this.isOpen();
+  toggleMenu(){
+     this.isMobileOpen.update(v => !v);
   }
 
   @HostListener('window:scroll', [])
@@ -35,9 +34,9 @@ export class NavbarComponent {
     const scrollPosition = window.scrollY || document.documentElement.scrollTop;
 
     if (scrollPosition > 120) {
-      this.isScrolled = true;
+      this.isScrolled.set(true);
     } else if (scrollPosition < 50) {
-      this.isScrolled = false;
+      this.isScrolled.set(false);
     }
   }
 }

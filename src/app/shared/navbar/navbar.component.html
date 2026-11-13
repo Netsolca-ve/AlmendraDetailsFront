@@ -1,13 +1,36 @@
-<nav [class.scrolled]="isScrolled">
+<nav [class.scrolled]="isScrolled()">
     <div class="logo">
         <h1>Almendra Details</h1>
     </div>
 
     <div class="links">
-        <a routerLink="/" routerLinkActive="active">Inicio</a>
-        <a routerLink="/products" routerLinkActive="active">Productos</a>
-        <a routerLink="/about" routerLinkActive="active">Sobre Nosotros</a>
-        <a routerLink="/contact" routerLinkActive="active">Contacto</a>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+        <a routerLink="/catalog" routerLinkActive="active">Catálogo</a>
+        <a routerLink="/about-us" routerLinkActive="active">Sobre Nosotros</a>
+    </div>
+
+    <div class="mobile">
+        <div class="links" [class.open]="isMobileOpen()" (click)="isMobileOpen.set(false)">
+            <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+            <a routerLink="/catalog" routerLinkActive="active">Catálogo</a>
+            <a routerLink="/about-us" routerLinkActive="active">Sobre Nosotros</a>
+
+            <button  class="contact-btn">
+                <i class="fa-brands fa-whatsapp" style="font-size: 22px; color: white;"></i>
+                Escribenos
+            </button>
+        </div>
+
+        <mat-icon (click)="isOpen.set(true)" class="material-icons-outlined cart-icon">shopping_cart</mat-icon>
+        <button type="button" class="menu-btm"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="isMobileOpen()"
+        aria-label="Abrir menu"
+        >
+        <mat-icon class="material-icons-outlined" >
+            {{ isMobileOpen() ? 'close' : 'menu'  }}
+        </mat-icon>
+        </button>
     </div>
 
     <div class="btns">

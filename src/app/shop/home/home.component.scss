@@ -198,7 +198,7 @@ img{
 
 .about{
     width: 100%;
-    height: 100vh;
+    // height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -240,7 +240,9 @@ img{
 
 .location{
     width: 100%;
-    height: 100vh;
+    // height: 100vh;
+    padding-top: 50px;
+    padding-bottom: 50px;
     background-color: #F9EBEC;
     display: flex;
     align-items: center;

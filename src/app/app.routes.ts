@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { ShopLayoutComponent } from './shared/layouts/shop-layout/shop-layout.component';
+import { AdminLayoutComponent } from './shared/layouts/admin-layout/admin-layout.component';
 
 export const routes: Routes = [
     {
@@ -9,7 +10,7 @@ export const routes: Routes = [
     },
     {
         path: 'admin',
-        component: ShopLayoutComponent,
+        component: AdminLayoutComponent,
         loadChildren: () => import('./admin/admin.routes').then((m) => m.AdminRoutes)
     }
 ];
