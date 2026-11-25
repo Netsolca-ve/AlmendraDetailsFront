@@ -9,10 +9,16 @@
 
 .hero{
     width: 100%;
-    height: 100vh;
+    // height fija (no min-height) para que el img con height: 100% llene la pantalla también en móvil
+    height: 100svh;
     position: relative;
     margin: 0px;
     padding: 0px;
+}
+
+// en pantallas angostas recorta hacia la izquierda para que no se corte la cara
+.hero img{
+    object-position: 30% center;
 }
 
 .hero::after {
@@ -22,7 +28,8 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.4);
+        // más oscuro arriba para que el navbar transparente se lea sobre la pared blanca
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) 25%, rgba(0, 0, 0, 0.4));
         pointer-events: none; 
     }
 
@@ -34,32 +41,46 @@ img{
 
 .info{
     position: absolute;
-    top: 55%;
-    left: 2%;
+    bottom: 12%;
+    left: 5%;
+    right: 5%;
+    max-width: 640px;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
 }
 
+.info .eyebrow{
+    margin: 0px;
+    font-size: 14px;
+    letter-spacing: 0.25em;
+    color: var(--color-strawberry);
+}
 
 .info h1{
-    font-size: 40px;
-    margin-bottom: 0px;
+    font-size: clamp(36px, 6vw, 72px);
+    line-height: 1.1;
+    margin: 0px;
     color: white;
     font-weight: bold;
-}
-
-.info p{
-    font-size: 15px;
-    margin-top: 0px;
-    color: white;
 }
 
 .info button{
-    width: auto;
-    background-color: white;
+    background-color: var(--color-matcha-dark);
+    color: white;
     border-radius: 30px;
     border: none;
-    height: 40px;
+    padding: 14px 28px;
+    letter-spacing: 0.1em;
     font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover{
+        background-color: var(--color-matcha-darker);
+    }
 }
 
 .categories{
@@ -134,7 +155,7 @@ img{
     text-decoration: underline;
     text-underline-offset: 8px;
     text-decoration-thickness: 2px;
-    color: green;
+    color: var(--color-matcha-dark);
 }
 
 .featuredGrid{
@@ -150,50 +171,78 @@ img{
     height: auto;
     background-color: white;
     border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(85, 93, 53, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover{
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(85, 93, 53, 0.15);
+    }
+
+    &:hover img{
+        transform: scale(1.05);
+    }
 }
 
 .featuredItemImg{
     width: 100%;
     height: 350px;
+    overflow: hidden;
 }
 
 .featuredItem img{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    transition: transform 0.4s ease;
 }
 
 .featuredItemInfo{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .featuredItemInfo h3{
-    font-size: 24px;
-    margin-bottom: 0px;
+    font-size: 18px;
+    margin: 0px;
 }
 
 .featuredItemInfo span{
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-matcha-dark);
 }
 
 .featuredItemBtn{
     width: 100%;
-    padding-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0 16px 16px;
+    box-sizing: border-box;
 }
 
 .featuredItemBtn button{
-    width: 95%;
+    width: 100%;
     background-color: transparent;
-    border: 1px solid black;
-    border-radius: 10px;
+    color: var(--color-matcha-dark);
+    border: 1px solid var(--color-matcha-dark);
+    border-radius: 20px;
     height: 40px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover{
+        background-color: var(--color-matcha-dark);
+        color: white;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .featuredItem, .featuredItem img{
+        transition: none;
+    }
 }
 
 .about{
@@ -229,7 +278,7 @@ img{
 }
 
 .aboutInfo h4{
-    font-size: 60px;
+    font-size: clamp(32px, 4vw, 48px);
 }
 
 .aboutInfo p{
@@ -269,7 +318,7 @@ img{
 }
 
 .mapInfo span{
-    color: #334537;
+    color: var(--color-matcha-dark);
 }
 
 .mapInfoIcon p{
@@ -351,7 +400,7 @@ form h4{
 }
 
 .btn button{
-    background-color: #334537;
+    background-color: var(--color-matcha-dark);
     color: white;
     border: none;
     padding: 10px;

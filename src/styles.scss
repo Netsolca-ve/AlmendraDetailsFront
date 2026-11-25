@@ -2,6 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 
+:root {
+    --color-matcha: #7A8450;
+    // matcha oscurecido: #7A8450 no da contraste suficiente para texto (2.8:1 con el rosa)
+    --color-matcha-dark: #555D35;
+    --color-matcha-darker: #444A2A;
+    --color-strawberry: #F8CDD6;
+    --color-cream: #FDF2F3;
+}
+
 p, label, input, button, select, textarea {
     font-family: "Montserrat", sans-serif;
 }
@@ -11,7 +20,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body{
-    background-color: #E8B4B8;
+    background-color: var(--color-strawberry);
     margin: 0;
     padding: 0;
 }

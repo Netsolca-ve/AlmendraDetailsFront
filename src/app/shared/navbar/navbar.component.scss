@@ -1,7 +1,22 @@
 :host {
   display: block;
   width: 100%;
-  height: 80px; 
+  height: 80px;
+}
+
+// En el home el navbar flota sobre el hero en vez de empujarlo hacia abajo
+:host(.over-hero) {
+  height: 0;
+
+  nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &.scrolled {
+      position: fixed;
+    }
+  }
 }
 
 nav {
@@ -11,16 +26,30 @@ nav {
   justify-content: space-around;
   align-items: center;
   z-index: 1000;
-  background-color: transparent;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  background-color: #FDF2F3;
+  background-color: var(--color-cream);
   position: relative;
+
+  &.transparent {
+    background-color: transparent;
+
+    .logo h1,
+    .links a,
+    .cart-icon,
+    .mobile mat-icon {
+      color: white;
+    }
+
+    .links a.active:after {
+      background-color: white;
+    }
+  }
 
   &.scrolled {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #FDF2F3;
+    background-color: var(--color-cream);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     animation: slideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -60,11 +89,11 @@ nav {
 }
 
 .links a:hover{
-    color: #334537;
+    color: var(--color-matcha-dark);
 }
 
 .links a.active {
-    color: #334537;
+    color: var(--color-matcha-dark);
     font-weight: 600;
 }
 
@@ -75,7 +104,7 @@ nav {
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #334537;
+    background-color: var(--color-matcha-dark);
     border-radius: 2px;
     animation: slideIn 0.3s ease forwards;
 }
@@ -100,12 +129,12 @@ nav {
 
 .btns .cart-icon{
     font-size: 1.5rem;
-    color: #334537;
+    color: var(--color-matcha-dark);
     cursor: pointer;
 }
 
 .btns button{
-    background-color: #334537;
+    background-color: var(--color-matcha-dark);
     border: none;
     padding: 5px 20px;
     border-radius: 20px;
@@ -159,7 +188,7 @@ nav {
 
   .mobile .links{
     position: absolute;
-    background-color: #FDF2F3;
+    background-color: var(--color-cream);
     top: 80px;
     right: 0;
     left: 0;
@@ -168,7 +197,7 @@ nav {
   }
 
   .mobile .links button{
-    background-color: #334537;
+    background-color: var(--color-matcha-dark);
     border: none;
     padding: 5px 20px;
     border-radius: 20px;
