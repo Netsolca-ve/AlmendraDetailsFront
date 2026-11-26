@@ -133,7 +133,9 @@ nav {
     cursor: pointer;
 }
 
-.btns button{
+.btns .contact-btn{
+    text-decoration: none;
+    font-size: 14px;
     background-color: var(--color-matcha-dark);
     border: none;
     padding: 5px 20px;
@@ -196,7 +198,8 @@ nav {
     padding-bottom: 10px;
   }
 
-  .mobile .links button{
+  .mobile .links .contact-btn{
+    text-decoration: none;
     background-color: var(--color-matcha-dark);
     border: none;
     padding: 5px 20px;
@@ -207,5 +210,34 @@ nav {
     justify-content: center;
     align-items: center;
     gap: 10px;
+  }
+}
+.contact-btn i{
+  font-size: 22px;
+}
+
+// quita el fondo y borde grises por defecto del navegador
+.menu-btm{
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  cursor: pointer;
+}
+
+@media (max-width: 768px){
+  nav{
+    justify-content: space-between;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  .logo h1{
+    font-size: 22px;
+    white-space: nowrap;
+  }
+
+  .mobile{
+    width: auto;
   }
 }

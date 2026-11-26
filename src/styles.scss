@@ -19,7 +19,35 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Playfair Display", serif;
 }
 
+// Encabezado compartido por catálogo, sobre nosotros y contacto
+.pageHeader{
+    background-color: var(--color-matcha-dark);
+    color: var(--color-cream);
+    text-align: center;
+    padding: 80px 16px 64px;
+
+    h1{
+        font-size: clamp(40px, 6vw, 64px);
+        margin: 8px 0 16px;
+    }
+
+    .subtitle{
+        margin: 0 auto;
+        max-width: 520px;
+        font-size: 18px;
+    }
+}
+
+.eyebrow{
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 0.25em;
+    color: var(--color-strawberry);
+}
+
 body{
+    // sin esto, links, spans y li caen en la serif por defecto del navegador
+    font-family: "Montserrat", sans-serif;
     background-color: var(--color-strawberry);
     margin: 0;
     padding: 0;

@@ -1,5 +1,6 @@
 <router-outlet></router-outlet>
 
+@if (showScrollTop()) {
 <button 
   mat-fab 
   class="scroll-to-top-btn" 
@@ -7,3 +8,4 @@
   aria-label="Volver al inicio" title="Subir">
 <i class="fa-solid fa-up-long"></i>
 </button>
+}

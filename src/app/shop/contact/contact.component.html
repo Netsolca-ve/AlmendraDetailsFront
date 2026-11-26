@@ -1,0 +1,65 @@
+<section class="pageHeader">
+    <p class="eyebrow">HABLEMOS</p>
+    <h1>Contacto</h1>
+    <p class="subtitle">Pedidos, dudas o detalles personalizados: te respondemos por WhatsApp.</p>
+</section>
+
+<section class="contact">
+    <aside class="info">
+        <h2>Escríbenos directo</h2>
+        <p>La forma más rápida de hacer tu pedido.</p>
+
+        <a class="whatsappBtn" [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            ESCRIBIR POR WHATSAPP
+        </a>
+
+        <ul class="details">
+            <li>
+                <mat-icon class="material-icons-outlined">location_on</mat-icon>
+                <span>{{ contact.location }}</span>
+            </li>
+            <li>
+                <mat-icon class="material-icons-outlined">schedule</mat-icon>
+                <span>{{ contact.hours }}</span>
+            </li>
+            <li>
+                <mat-icon class="material-icons-outlined">email</mat-icon>
+                <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
+            </li>
+        </ul>
+
+        <div class="socials">
+            <a [href]="contact.instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a [href]="contact.tiktok" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </aside>
+
+    <form class="form" (submit)="sendToWhatsApp($event, name.value, lastName.value, message.value)">
+        <h2>¿Te gustaría decirnos algo?</h2>
+
+        <div class="row">
+            <div class="field">
+                <label for="name">Nombre</label>
+                <input #name type="text" id="name" placeholder="Tu nombre" required>
+            </div>
+
+            <div class="field">
+                <label for="lastName">Apellido</label>
+                <input #lastName type="text" id="lastName" placeholder="Tu apellido">
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="message">Mensaje</label>
+            <textarea #message id="message" placeholder="Cuéntanos qué detalle buscas" required></textarea>
+        </div>
+
+        <button type="submit">ENVIAR POR WHATSAPP</button>
+    </form>
+</section>
+
+<section class="map">
+    <iframe title="Ubicación de Almendra Details" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.745236156743!2d-71.62409652435629!3d10.676872261020929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8999b882280765%3A0xa33e0645018c7cb0!2sEdificio%20El%20Turpial!5e0!3m2!1ses!2sve!4v1788622013189!5m2!1ses!2sve" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</section>

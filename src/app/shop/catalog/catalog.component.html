@@ -1,1 +1,45 @@
-<p>catalog works!</p>
+<section class="pageHeader">
+    <p class="eyebrow">NUESTRA COLECCIÓN</p>
+    <h1>Catálogo</h1>
+    <p class="subtitle">Ramos, peluches y detalles hechos a mano para cada ocasión.</p>
+</section>
+
+<section class="catalog">
+    <div class="filters" role="group" aria-label="Filtrar por categoría">
+        @for (cat of categories; track cat.id) {
+            <button type="button"
+                [class.active]="selected() === cat.id"
+                [attr.aria-pressed]="selected() === cat.id"
+                (click)="selected.set(cat.id)">
+                {{ cat.label }}
+            </button>
+        }
+    </div>
+
+    <p class="count">{{ filtered().length }} {{ filtered().length === 1 ? 'producto' : 'productos' }}</p>
+
+    @if (filtered().length) {
+        <div class="grid">
+            @for (product of filtered(); track product.id) {
+                <article class="card">
+                    <div class="cardImg">
+                        <img [src]="product.image" [alt]="product.name">
+                    </div>
+                    <div class="cardInfo">
+                        <h3>{{ product.name }}</h3>
+                        <span class="price">{{ product.price | currency: 'USD' }}</span>
+                    </div>
+                    <div class="cardBtn">
+                        <button type="button">VER DETALLE</button>
+                    </div>
+                </article>
+            }
+        </div>
+    } @else {
+        <div class="empty">
+            <h2>Muy pronto</h2>
+            <p>Estamos preparando esta colección. Mientras tanto, mira nuestros ramos.</p>
+            <button type="button" (click)="selected.set('ramos')">VER RAMOS</button>
+        </div>
+    }
+</section>

@@ -1,0 +1,139 @@
+.catalog{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 16px 96px;
+}
+
+.filters{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+
+    button{
+        background-color: transparent;
+        color: var(--color-matcha-dark);
+        border: 1px solid var(--color-matcha-dark);
+        border-radius: 30px;
+        padding: 10px 24px;
+        font-size: 15px;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+
+        &:hover, &.active{
+            background-color: var(--color-matcha-dark);
+            color: white;
+        }
+    }
+}
+
+.count{
+    text-align: center;
+    color: var(--color-matcha-dark);
+    margin: 24px 0 32px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+// shortcut: estilos copiados de las tarjetas del home, se unifican al crear un ProductCard en la Fase 2
+.card{
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(85, 93, 53, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover{
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(85, 93, 53, 0.15);
+    }
+
+    &:hover img{
+        transform: scale(1.05);
+    }
+}
+
+.cardImg{
+    height: 320px;
+    overflow: hidden;
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+}
+
+.cardInfo{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    h3{
+        font-size: 18px;
+        margin: 0;
+    }
+}
+
+.price{
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-matcha-dark);
+}
+
+.cardBtn{
+    padding: 0 16px 16px;
+}
+
+.cardBtn button, .empty button{
+    width: 100%;
+    background-color: transparent;
+    color: var(--color-matcha-dark);
+    border: 1px solid var(--color-matcha-dark);
+    border-radius: 20px;
+    height: 40px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover{
+        background-color: var(--color-matcha-dark);
+        color: white;
+    }
+}
+
+.empty{
+    background-color: var(--color-cream);
+    border-radius: 10px;
+    text-align: center;
+    padding: 64px 16px;
+
+    h2{
+        font-size: 32px;
+        margin: 0 0 12px;
+        color: var(--color-matcha-dark);
+    }
+
+    p{
+        margin: 0 auto 24px;
+        max-width: 420px;
+    }
+
+    button{
+        width: auto;
+        padding: 0 32px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .card, .cardImg img{
+        transition: none;
+    }
+}

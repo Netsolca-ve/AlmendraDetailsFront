@@ -6,6 +6,7 @@ import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component'
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { CONTACT_INFO } from '../contact-info';
 
 @Component({
   selector: 'app-navbar',
@@ -23,6 +24,8 @@ import { CommonModule } from '@angular/common';
 })
 export class NavbarComponent {
   private router = inject(Router);
+
+  contact = CONTACT_INFO;
 
   isScrolled = signal(false);
   isOpen = signal(false);

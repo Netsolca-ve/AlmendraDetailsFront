@@ -18,6 +18,11 @@ export const ShopRoutes: Routes = [
         title: 'Almendra Details - Sobre Nosotros'
     },
     {
+        path: 'contact',
+        loadComponent: () => import('./contact/contact.component').then((c) => c.ContactComponent),
+        title: 'Almendra Details - Contacto'
+    },
+    {
         path: '**',
         loadComponent: () => import('./not-found/not-found.component').then((c) => c.NotFoundComponent),
         title: 'Página no encontrada'

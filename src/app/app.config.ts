@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angular/router';
 
 import { routes } from './app.routes';
 import { registerLocaleData } from '@angular/common';
@@ -12,7 +12,8 @@ registerLocaleData(es);
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), 
-    provideRouter(routes), 
+    // 'enabled': cada navegación nueva arranca arriba; el botón atrás vuelve a donde estabas
+    provideRouter(routes, withViewTransitions(), withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })), 
     importProvidersFrom(FormsModule), 
     provideAnimationsAsync(), 
     provideHttpClient()]

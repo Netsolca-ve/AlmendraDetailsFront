@@ -8,6 +8,24 @@
         </div>
     </section>
 
+    <section class="infoBar" aria-label="Datos de la tienda">
+        <div class="infoItem">
+            <mat-icon class="material-icons-outlined">location_on</mat-icon>
+            <span class="long">{{ contact.location }}</span>
+            <span class="short">{{ contact.locationShort }}</span>
+        </div>
+        <div class="infoItem">
+            <mat-icon class="material-icons-outlined">schedule</mat-icon>
+            <span class="long">{{ contact.hours }}</span>
+            <span class="short">{{ contact.hoursShort }}</span>
+        </div>
+        <a class="infoItem" [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            <span class="long">Pedidos por WhatsApp</span>
+            <span class="short">WhatsApp</span>
+        </a>
+    </section>
+
     <section class="categories">
         <div class="categorieItem">
             <img src='/assets/cat1.jpeg' alt="Categoría 1">
@@ -114,7 +132,7 @@
         <div class="aboutInfo">
             <h4>Cada pétalo cuenta una historia</h4>
 
-            <p>En Almendra Details transformamos tus sentimientos en arreglos florales inolvidables. Somos una tienda 100 % online creada para ayudarte a celebrar, conectar y sorprender desde cualquier lugar y en solo unos clics.</p>
+            <p>En Almendra Details transformamos tus sentimientos en arreglos florales inolvidables. Somos una tienda 100% online creada para ayudarte a celebrar, conectar y sorprender desde cualquier lugar y en solo unos clics.</p>
 
             <p>Nos enfocamos en el poder emocional de los detalles. Seleccionamos cuidadosamente cada flor para diseñar ramos únicos que expresen exactamente lo que quieres transmitir y hagan sentir especial a quien los recibe.</p>
 
@@ -122,53 +140,15 @@
         </div>
     </section>
 
-    <section class="location">
-        <div class="mapInfo">
-            <div class="mapInfoIcon">
-                <mat-icon class="material-icons-outlined">location_on</mat-icon>
-                <p>Tienda Online ubicada en Delicias</p>
-            </div>
-
-            <div class="mapInfoIcon">
-                <mat-icon class="material-icons-outlined">schedule</mat-icon>
-                <p>Lun - Dom: 10:00 AM - 10:00 PM</p>
-            </div>
-
-            <div class="mapInfoIcon">
-                <mat-icon class="material-icons-outlined">email</mat-icon>
-                <p>almendradetails&#64;gmail.com</p>
-            </div>
-
-            <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.745236156743!2d-71.62409652435629!3d10.676872261020929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8999b882280765%3A0xa33e0645018c7cb0!2sEdificio%20El%20Turpial!5e0!3m2!1ses!2sve!4v1788622013189!5m2!1ses!2sve" width="450" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            </div>
-        </div>
-
-        <div class="form">
-            <form action="">
-                <h4>¿Te gustaría decirnos algo? Escríbenos</h4>
-
-                <div class="inputGroup2">
-                    <div class="inputGroup">
-                        <label for="name">Nombre</label>
-                        <input type="text" id="nombre" placeholder="Tu nombre">
-                    </div>
-
-                    <div class="inputGroup">
-                        <label for="lastName">Apellido</label>
-                        <input type="text" id="lastName" placeholder="Tu apellido">
-                    </div>
-                </div>
-
-                    <div class="inputGroup3">
-                        <label for="message">Mensaje</label>
-                        <textarea name="message" id="message" placeholder="Tu mensaje"></textarea>
-                    </div>
-
-                    <div class="btn">
-                        <button>ENVIAR MENSAJE</button>
-                    </div>
-            </form>
+    <section class="contactCta">
+        <h2>¿Buscas un detalle personalizado?</h2>
+        <p>Cuéntanos la ocasión y lo diseñamos para ti.</p>
+        <div class="contactCtaBtns">
+            <a class="primary" [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                ESCRÍBENOS
+            </a>
+            <a class="secondary" routerLink="/contact">VER CONTACTO</a>
         </div>
     </section>
 </main>
