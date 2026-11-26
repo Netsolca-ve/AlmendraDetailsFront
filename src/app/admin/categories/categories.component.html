@@ -1,0 +1,55 @@
+<header class="adminHeader">
+    <div>
+        <h1>Categorías</h1>
+        <p>Organizan el catálogo de la tienda</p>
+    </div>
+</header>
+
+<div class="adminGrid">
+    <section class="adminCard">
+        <h2>Nueva categoría</h2>
+        <!-- sin [formGroup] no existe (ngSubmit): hay que frenar el submit nativo o recarga la página -->
+        <form class="adminForm" (submit)="$event.preventDefault(); save()">
+            <label>
+                Nombre
+                <input [formControl]="name" placeholder="Ej. Combos">
+            </label>
+            @if (name.touched && name.invalid) {
+                <p class="hint">Escribe el nombre de la categoría.</p>
+            }
+            @if (error()) {
+                <p class="hint" role="alert">{{ error() }}</p>
+            }
+            <button class="adminBtn" type="submit">Guardar categoría</button>
+        </form>
+    </section>
+
+    <section class="adminCard">
+        <h2>Listado</h2>
+        <div class="tableWrap">
+            <table class="adminTable">
+                <thead>
+                    <tr><th>Categoría</th><th class="num">Productos</th><th></th></tr>
+                </thead>
+                <tbody>
+                    @for (cat of store.categories(); track cat.id) {
+                        <tr>
+                            <td>{{ cat.name }}</td>
+                            <td class="num"><span class="badge">{{ productCount(cat.id) }}</span></td>
+                            <td class="num">
+                                <button class="iconBtn" type="button" (click)="remove(cat.id, cat.name)"
+                                    [disabled]="productCount(cat.id) > 0"
+                                    [attr.aria-label]="'Eliminar ' + cat.name"
+                                    [title]="productCount(cat.id) > 0 ? 'Tiene productos' : 'Eliminar'">
+                                    <mat-icon class="material-icons-outlined">delete</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    } @empty {
+                        <tr><td colspan="3"><p class="emptyState">No hay categorías.</p></td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>

@@ -1,7 +1,7 @@
 <nav [class.scrolled]="isScrolled()" [class.transparent]="isTransparent()">
-    <div class="logo">
-        <h1>Almendra Details</h1>
-    </div>
+    <a class="logo" routerLink="/" aria-label="Almendra Details, ir al inicio">
+        <span class="logoMark" aria-hidden="true"></span>
+    </a>
 
     <div class="links">
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>

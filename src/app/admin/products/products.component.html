@@ -1,1 +1,85 @@
-<p>products works!</p>
+<header class="adminHeader">
+    <div>
+        <h1>Productos</h1>
+        <p>{{ store.products().length }} productos registrados</p>
+    </div>
+</header>
+
+<div class="adminGrid">
+    <section class="adminCard">
+        <h2>Nuevo producto</h2>
+
+        @if (store.categories().length) {
+            <form class="adminForm" [formGroup]="form" (ngSubmit)="save()">
+                <label>
+                    Nombre
+                    <input formControlName="name" placeholder="Ej. Ramo Girasol">
+                </label>
+                @if (form.controls.name.touched && form.controls.name.invalid) {
+                    <p class="hint">Escribe el nombre del producto.</p>
+                }
+
+                <label>
+                    Categoría
+                    <select formControlName="categoryId">
+                        <option [ngValue]="0" disabled>Elige una categoría</option>
+                        @for (cat of store.categories(); track cat.id) {
+                            <option [ngValue]="cat.id">{{ cat.name }}</option>
+                        }
+                    </select>
+                </label>
+                @if (form.controls.categoryId.touched && form.controls.categoryId.invalid) {
+                    <p class="hint">Elige una categoría.</p>
+                }
+
+                <div class="row">
+                    <label>
+                        Precio ($)
+                        <input type="number" min="0" step="0.01" formControlName="price">
+                    </label>
+                    <label>
+                        Stock
+                        <input type="number" min="0" step="1" formControlName="stock">
+                    </label>
+                </div>
+                @if ((form.controls.price.touched && form.controls.price.invalid) || (form.controls.stock.touched && form.controls.stock.invalid)) {
+                    <p class="hint">El precio debe ser mayor a 0 y el stock un número entero.</p>
+                }
+
+                <button class="adminBtn" type="submit">Guardar producto</button>
+            </form>
+        } @else {
+            <p class="emptyState">Primero crea una categoría en <a routerLink="/admin/categories">Categorías</a>.</p>
+        }
+    </section>
+
+    <section class="adminCard">
+        <h2>Inventario</h2>
+        @if (store.products().length) {
+            <div class="tableWrap">
+                <table class="adminTable">
+                    <thead>
+                        <tr><th>Producto</th><th>Categoría</th><th class="num">Precio</th><th class="num">Stock</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        @for (product of store.products(); track product.id) {
+                            <tr>
+                                <td>{{ product.name }}</td>
+                                <td>{{ store.categoryName(product.categoryId) }}</td>
+                                <td class="num">{{ product.price | currency: 'USD' }}</td>
+                                <td class="num"><span class="badge" [class.low]="product.stock <= 3">{{ product.stock }}</span></td>
+                                <td class="num">
+                                    <button class="iconBtn" type="button" (click)="remove(product.id, product.name)" [attr.aria-label]="'Eliminar ' + product.name">
+                                        <mat-icon class="material-icons-outlined">delete</mat-icon>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        } @else {
+            <p class="emptyState">Todavía no hay productos. Crea el primero con el formulario.</p>
+        }
+    </section>
+</div>

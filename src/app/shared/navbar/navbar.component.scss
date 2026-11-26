@@ -33,7 +33,6 @@ nav {
   &.transparent {
     background-color: transparent;
 
-    .logo h1,
     .links a,
     .cart-icon,
     .mobile mat-icon {
@@ -70,8 +69,19 @@ nav {
     justify-content: center;
 }
 
-.logo h1{
-    margin: 0;
+// el PNG del logo se usa como máscara: el color sale de background-color, así cambia con el scroll
+.logoMark{
+    display: block;
+    height: 32px;
+    aspect-ratio: 976 / 120;
+    background-color: var(--color-matcha-dark);
+    mask: url('/assets/logo-wordmark.png') center / contain no-repeat;
+    -webkit-mask: url('/assets/logo-wordmark.png') center / contain no-repeat;
+    transition: background-color 0.3s ease;
+}
+
+nav.transparent .logoMark{
+    background-color: white;
 }
 
 .links{
@@ -232,9 +242,8 @@ nav {
     box-sizing: border-box;
   }
 
-  .logo h1{
-    font-size: 22px;
-    white-space: nowrap;
+  .logoMark{
+    height: 22px;
   }
 
   .mobile{

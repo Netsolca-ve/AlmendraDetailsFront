@@ -1,1 +1,68 @@
-<p>dashboard works!</p>
+<header class="adminHeader">
+    <div>
+        <h1>Dashboard</h1>
+        <p>Resumen de la tienda</p>
+    </div>
+    <div class="actions">
+        <a class="adminBtn" routerLink="/admin/sales">
+            <mat-icon class="material-icons-outlined">add</mat-icon>
+            Registrar venta
+        </a>
+        <a class="adminBtn outline" routerLink="/admin/products">Nuevo producto</a>
+    </div>
+</header>
+
+<section class="stats">
+    @for (stat of stats(); track stat.label) {
+        <article class="adminCard stat">
+            <mat-icon class="material-icons-outlined">{{ stat.icon }}</mat-icon>
+            <div>
+                <p class="statLabel">{{ stat.label }}</p>
+                <p class="statValue">{{ stat.money ? (stat.value | currency: 'USD') : stat.value }}</p>
+            </div>
+        </article>
+    }
+</section>
+
+<section class="panels">
+    <article class="adminCard">
+        <h2>Últimas ventas</h2>
+        @if (recentSales().length) {
+            <div class="tableWrap">
+                <table class="adminTable">
+                    <thead>
+                        <tr><th>Fecha</th><th>Producto</th><th>Cliente</th><th class="num">Total</th></tr>
+                    </thead>
+                    <tbody>
+                        @for (sale of recentSales(); track sale.id) {
+                            <tr>
+                                <td>{{ sale.date | date: 'dd/MM/yyyy' }}</td>
+                                <td>{{ store.productName(sale.productId) }} × {{ sale.quantity }}</td>
+                                <td>{{ sale.customer || '—' }}</td>
+                                <td class="num">{{ sale.total | currency: 'USD' }}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        } @else {
+            <p class="emptyState">Todavía no hay ventas registradas.</p>
+        }
+    </article>
+
+    <article class="adminCard">
+        <h2>Stock bajo</h2>
+        @if (lowStock().length) {
+            <ul class="stockList">
+                @for (product of lowStock(); track product.id) {
+                    <li>
+                        <span>{{ product.name }}</span>
+                        <span class="badge low">{{ product.stock }} {{ product.stock === 1 ? 'unidad' : 'unidades' }}</span>
+                    </li>
+                }
+            </ul>
+        } @else {
+            <p class="emptyState">Todo el inventario está bien.</p>
+        }
+    </article>
+</section>

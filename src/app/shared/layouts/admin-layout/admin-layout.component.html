@@ -1,1 +1,26 @@
-<p>admin-layout works!</p>
+<div class="shell">
+    <aside class="sidebar">
+        <a class="brand" routerLink="/admin">
+            <img src="/assets/logo.jpeg" alt="">
+            <span>Panel<br><small>Almendra Details</small></span>
+        </a>
+
+        <nav class="menu" aria-label="Menú del panel">
+            @for (item of menu; track item.path) {
+                <a [routerLink]="item.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: item.exact }">
+                    <mat-icon class="material-icons-outlined">{{ item.icon }}</mat-icon>
+                    <span>{{ item.label }}</span>
+                </a>
+            }
+        </nav>
+
+        <a class="toShop" routerLink="/">
+            <mat-icon class="material-icons-outlined">storefront</mat-icon>
+            <span>Ver tienda</span>
+        </a>
+    </aside>
+
+    <main class="content">
+        <router-outlet></router-outlet>
+    </main>
+</div>

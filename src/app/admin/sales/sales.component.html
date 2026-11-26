@@ -1,0 +1,100 @@
+<header class="adminHeader">
+    <div>
+        <h1>Ventas</h1>
+        <p>{{ store.sales().length }} ventas registradas</p>
+    </div>
+</header>
+
+<div class="adminGrid">
+    <section class="adminCard">
+        <h2>Registrar venta</h2>
+
+        @if (store.products().length) {
+            <form class="adminForm" [formGroup]="form" (ngSubmit)="save()">
+                <label>
+                    Producto
+                    <select formControlName="productId">
+                        <option [ngValue]="0" disabled>Elige un producto</option>
+                        @for (product of store.products(); track product.id) {
+                            <option [ngValue]="product.id" [disabled]="product.stock === 0">
+                                {{ product.name }} · {{ product.price | currency: 'USD' }} · {{ product.stock }} en stock
+                            </option>
+                        }
+                    </select>
+                </label>
+                @if (form.controls.productId.touched && form.controls.productId.invalid) {
+                    <p class="hint">Elige un producto.</p>
+                }
+
+                <div class="row">
+                    <label>
+                        Cantidad
+                        <input type="number" min="1" step="1" [max]="selected()?.stock ?? null" formControlName="quantity">
+                    </label>
+                    <label>
+                        Fecha
+                        <input type="date" formControlName="date">
+                    </label>
+                </div>
+
+                <label>
+                    Cliente (opcional)
+                    <input formControlName="customer" placeholder="Nombre de quien compra">
+                </label>
+
+                <label>
+                    Método de pago
+                    <select formControlName="payment">
+                        @for (method of payments; track method) {
+                            <option [ngValue]="method">{{ method }}</option>
+                        }
+                    </select>
+                </label>
+
+                <div class="total">
+                    <span>Total</span>
+                    <strong>{{ total() | currency: 'USD' }}</strong>
+                </div>
+
+                @if (error()) {
+                    <p class="hint" role="alert">{{ error() }}</p>
+                }
+
+                <button class="adminBtn" type="submit">Registrar venta</button>
+            </form>
+        } @else {
+            <p class="emptyState">Primero registra productos en <a routerLink="/admin/products">Productos</a>.</p>
+        }
+    </section>
+
+    <section class="adminCard">
+        <h2>Historial</h2>
+        @if (store.sales().length) {
+            <div class="tableWrap">
+                <table class="adminTable">
+                    <thead>
+                        <tr><th>Fecha</th><th>Producto</th><th>Cliente</th><th>Pago</th><th class="num">Total</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        @for (sale of store.sales(); track sale.id) {
+                            <tr>
+                                <td>{{ sale.date | date: 'dd/MM/yyyy' }}</td>
+                                <td>{{ store.productName(sale.productId) }} × {{ sale.quantity }}</td>
+                                <td>{{ sale.customer || '—' }}</td>
+                                <td><span class="badge">{{ sale.payment }}</span></td>
+                                <td class="num">{{ sale.total | currency: 'USD' }}</td>
+                                <td class="num">
+                                    <button class="iconBtn" type="button" (click)="remove(sale.id)" aria-label="Anular venta">
+                                        <mat-icon class="material-icons-outlined">delete</mat-icon>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        } @else {
+            <p class="emptyState">Todavía no hay ventas.</p>
+        }
+    </section>
+</div>

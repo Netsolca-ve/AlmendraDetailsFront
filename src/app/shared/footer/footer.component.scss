@@ -19,6 +19,16 @@ footer{
     padding-top: 20px;
 }
 
+.logoMark{
+    display: block;
+    height: 36px;
+    aspect-ratio: 976 / 120;
+    margin: 16px 0;
+    background-color: var(--color-strawberry);
+    mask: url('/assets/logo-wordmark.png') left center / contain no-repeat;
+    -webkit-mask: url('/assets/logo-wordmark.png') left center / contain no-repeat;
+}
+
 .footerLeftInfo{
     display: flex;
     flex-direction: column;
