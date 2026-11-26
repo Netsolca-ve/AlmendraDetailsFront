@@ -69,7 +69,9 @@ img{
     font-weight: bold;
 }
 
-.info button{
+.info a{
+    display: inline-block;
+    text-decoration: none;
     background-color: var(--color-matcha-dark);
     color: white;
     border-radius: 30px;
